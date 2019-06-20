@@ -12,12 +12,14 @@ import UICheckbox
 class ViewController: UIViewController {
 
 
+    @IBOutlet weak var checkbox: UICheckbox!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        checkbox.onSelectStateChanged = {
-//            (checkbox, selected) in
-//            debugPrint("Clicked \(selected)")
-//        }
+        checkbox.onSelectStateChanged = {
+            (checkbox, selected) in
+            debugPrint("Clicked \(selected)")
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 
