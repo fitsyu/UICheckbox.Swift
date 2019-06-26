@@ -67,6 +67,8 @@ import UIKit
         didSet {
             super.isSelected = isSelected
             onSelectStateChanged?(self, isSelected)
+            
+            setBackgroundImage(isSelected ? image : nil, for: .normal)
         }
     }
 
@@ -112,7 +114,8 @@ import UIKit
     override open func prepareForInterfaceBuilder() {
         setTitle("", for: UIControl.State())
     }
-    
+ 
+    var image: UIImage?
 }
 
 // MARK: Private methods
@@ -134,11 +137,7 @@ public extension UICheckbox {
         let resourceBundle = Bundle(url: bundleURL!)
         let image = UIImage(named: "ic_check_3x", in: resourceBundle, compatibleWith: nil)
         imageView?.contentMode = .scaleAspectFit
-
-        setImage(nil, for: UIControl.State())
-        setImage(image, for: .selected)
-        setImage(image, for:  .highlighted)
-
+        self.image = image
     }
 
     @objc fileprivate func checkboxTapped(_ sender: UICheckbox) {
